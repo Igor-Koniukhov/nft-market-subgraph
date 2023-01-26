@@ -1,11 +1,6 @@
 specVersion: 0.0.5
-description: Study project nft-market for creating, sale and buy NFT
-feature:
-  - fullTextSearch
-  - nonFatalErrors
-repository: https://github.com/Igor-Koniukhov/nft-market-subgraph.git
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: NftMarket
@@ -13,7 +8,6 @@ dataSources:
     source:
       address: "0x8D56523B320F3746e4ceD9c20CfAfD7F42E747FD"
       abi: NftMarket
-      startBlock: 8367122
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -27,7 +21,7 @@ dataSources:
         - Transfer
       abis:
         - name: NftMarket
-          file: ./abis/NftMarket.json
+          file: NftMarket/abis/NftMarket.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,indexed uint256)
           handler: handleApproval
@@ -41,4 +35,4 @@ dataSources:
           handler: handleRoyaltyAmountSent
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-      file: ./src/nft-market.ts
+      file: NftMarket/NftMarket.wasm
